@@ -1,0 +1,24 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+
+@{ var about = CurrentPage.AncestorOrSelf(1).About.First(); }
+
+@if(CurrentPage.AncestorOrSelf(1).About.Count() > 0)
+{
+
+ <!-- About Section -->
+ 
+  <section class="bg-primary text-white mb-0" id="@about.Name.ToLower().Replace(" ", "_")">
+      <div class="container">
+        <h2 class="text-center text-uppercase text-white">@((about.HasValue("header")? about.header : about.Name))</h2>
+        <hr class="star-light mb-5">
+        <div class="row">
+          <div class="col-lg-4 ml-auto">
+            <p class="lead"> @about.leftColumn</p>
+          </div>
+          <div class="col-lg-4 mr-auto">
+            <p class="lead">                    @about.rightColumn</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    }
